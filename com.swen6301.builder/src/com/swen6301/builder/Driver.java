@@ -1,42 +1,69 @@
-package com.swen6301.builder;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
-import com.swen6301.builder.util.PersistenceUtils;
-import com.swen6301.builder.util.RandomUtils;
+namespace Driver
+{
+    enum sex {male=1,female=2};
+    enum BloodType { A=1,B=2,AB=3,O=4};
 
-/**
- * A dummy driver class that simulates a driver class for this project.
- */
-public class Driver {
-	
-	public static void main(String[] args) {
-		
-		// Create 1000 random samples.
-		for(int i = 0; i < 1000; i++) {
-			System.out.println("****************");
-			createRandomPatientInfo();
-			System.out.println("****************");
-		}
-	}
-	
-	/**
-	 * Creates a sample patient info and store them on internal storage.
-	 */
-	public static void createRandomPatientInfo() {
-		String firstName = RandomUtils.randomIdentifier();
-		String middleName = RandomUtils.randomIdentifier();
-		String lastName = RandomUtils.randomIdentifier();
-		int age = RandomUtils.randomNumber(150);
-		int weight = RandomUtils.randomNumber(400);
-		String sex = RandomUtils.randomSexString();
-		int height = RandomUtils.randomNumber(300);
-		boolean organDonor = RandomUtils.randomBoolean();
-		String bloodType = RandomUtils.randomBloodType();
-		boolean success = PersistenceUtils.storePatientInfo(firstName, middleName, lastName, age, weight, sex, height, organDonor, bloodType);
-		if(success) {
-			System.out.println("Patient [" + firstName + ", " + lastName + "] has been successfully processed!");
-		} else {
-			System.out.println("An error occurred while processing info for patient [" + firstName + ", " + lastName + "]!");
-		}
-	}
-	
+    class Program
+    {
+       
+        static void Main(string[] args)
+        {
+
+            string firstname;
+            string middlename;
+            string lastname;
+            int age;
+            int weight;
+            int height;
+          
+           for (int i = 0; i < 1000; i++)
+            {
+                Console.WriteLine("Enter your name: ");
+                firstname = Console.ReadLine();
+
+                Console.WriteLine("Enter your Middle Name: ");
+                middlename = Console.ReadLine();
+
+                Console.WriteLine("Enter your lastname: ");
+                lastname = Console.ReadLine();
+
+                Console.WriteLine("Enter your age: ");
+                age = Convert.ToInt32(Console.ReadLine());
+
+                Console.WriteLine("Enter your weight: ");
+                weight = Convert.ToInt32(Console.ReadLine());
+
+                Console.WriteLine("Enter your Height: ");
+                height = Convert.ToInt32(Console.ReadLine());
+              
+                Console.WriteLine("enter organdonor");
+                bool t = true | OrganDonor();
+                Console.WriteLine(t);
+
+                bool f = false | OrganDonor();
+                Console.WriteLine(f);
+              
+                Console.WriteLine("   Pateint: " + firstname + " " + lastname + "  has been successfully processed!");
+            }
+
+            bool OrganDonor()
+            {
+                Console.WriteLine(" OrganDonor is True");
+                return true;
+            }
+
+            int sexID = 1;
+            Console.WriteLine((sex)sexID);
+           
+            int BloodTypeID = 4;
+            Console.WriteLine( (BloodType)BloodTypeID);
+            Console.ReadKey();
+        }
+            
+    }
 }
